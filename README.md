@@ -1,42 +1,44 @@
-# Solarize color theme tmux configuration
+# Solarized Color Theme tmux Configuration
 
-A tmux solarized theme using Ethan Schoonover’s [Solarized color scheme](http://ethanschoonover.com/solarized).
+A [tmux](https://github.com/tmux/tmux) solarized theme using Ethan Schoonover’s [Solarized color scheme](http://ethanschoonover.com/solarized). This fork has been updated to work with `tmux` version `2.9a`.
 
 ## Repositories
-  * This theme as a single repository: [/seebi/tmux-colors-solarized](https://github.com/seebi/tmux-colors-solarized)
+  * This theme as a single repository: [/broesler/tmux-colors-solarized](https://github.com/broesler/tmux-colors-solarized)
   * The main solarized repository: [/altercation/solarized](https://github.com/altercation/solarized)
 
 ## Installation
-These config snippets for the terminal multiplexer tmux should be added to your `~/.tmux.conf` configuration file.
-This means you have to append the content of e.g. `tmuxcolors-256.conf` to the end of your own config e.g. by using this oneliner (backup you config first!!):
+Clone the repository:
 
-    cat tmuxcolors-256.conf >> ~/.tmux.conf
+    mkdir -p ~/.tmux/plugins
+    git clone  https://github.com/broesler/tmux-colors-solarized ~/.tmux/plugins/tmux-colors-solarized
 
-In most cases, you have to force tmux to assume the terminal supports 256 colours.
-For this, start tmux as `tmux -2`.
+These config snippets should be added to your `~/.tmux.conf` configuration file. Four themes are provided so you can pick and choose:
 
-This color scheme is tested with tmux >= 1.5. tmux 1.1 is reported as not working.
+- `256` (default)
+- `dark`
+- `light`
+- `base16`
+
+### Installation as-is
+In your `.tmux.conf`, set the theme option, then source the main script:
+
+```tmux
+    set -g @colors-solarized 'dark'   # choose '256', 'dark', 'light', 'base16'
+    run-shell ~/.tmux/plugins/tmux-colors-solarized/tmuxcolors.tmux
+```
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
 
-Add plugin to the list of TPM plugins in `.tmux.conf`:
+Set the theme option, then add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @plugin 'seebi/tmux-colors-solarized'
+    set -g @colors-solarized 'dark'   # choose '256', 'dark', 'light', 'base16'
+    set -g @plugin 'plugins/tmux-colors-solarized'
 
-Hit `prefix + I` to fetch the plugin and source it. The plugin should now be working.
+Hit `prefix` + <kbd>I</kbd> to fetch the plugin and source it. The plugin should now be working.
 
-4 themes are provided so you can pick and choose via `.tmux.conf` option:
-
-- `set -g @colors-solarized '256'` (the default)
-- `set -g @colors-solarized 'dark'`
-- `set -g @colors-solarized 'light'`
-- `set -g @colors-solarized 'base16'`
+This color scheme is tested with tmux >= 2.9a. tmux 1.1 is reported as not working.
 
 ## Screenshot
-Here is a screenshot of a tmux session captured from a gnome-terminal using the [dz-version of the awesome Inconsolata font](http://nodnod.net/2009/feb/12/adding-straight-single-and-double-quotes-inconsola/).
+Here is a screenshot of a tmux session captured from a gnome-terminal.
 
-![screenshot](https://github.com/seebi/tmux-colors-solarized/raw/master/tmuxcolors.png)
-
-And another one showing different dircolors from the neighboring [dircolors-solarized](https://github.com/seebi/dircolors-solarized) repository.
-
-![screenshot](https://github.com/seebi/dircolors-solarized/raw/master/img/dircolors.256dark.png)
+![screenshot](https://github.com/broesler/tmux-colors-solarized/raw/master/tmuxcolors.png)
